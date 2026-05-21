@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoShop - Statistiques d'Impact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css">
+  <style>
+    .bar { display: inline-block; width: 30px; background: #2e7d32; margin-right: 5px; transition: height 0.1s; }
+  </style>
+</head>
+<body class="p-4">
+<div class="container">
+  <h2>Impact Écologique Global en Temps Réel</h2>
+  <p>Mise à jour intensive de la simulation d'absorption CO2 :</p>
+  <div id="chart-container" style="height: 200px; border-bottom: 2px solid #333; display: flex; align-items: flex-end;"></div>
+</div>
+
+<script>
+  const container = document.getElementById('chart-container');
+  for (let i = 0; i < 80; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = '10px';
+    container.appendChild(bar);
+  }
+
+  // PIÈGE E : Utilisation de setInterval à haute fréquence (10ms) brisant les cycles d'affichage
+  setInterval(() => {
+    const bars = document.querySelectorAll('.bar');
+
+    bars.forEach(bar => {
+      // PIÈGE F : Un calcul de boucle lourde imbriqué bloquant l'animation (Math Burn)
+      let totalCalculation = 0;
+      for (let k = 0; k < 50000; k++) {
+        totalCalculation += Math.sin(k) * Math.cos(k);
+      }
+
+      let newHeight = Math.floor(Math.random() * 180) + 10;
+      bar.style.height = newHeight + 'px';
+    });
+  }, 100);
+</script>
+</body>
+</html>
