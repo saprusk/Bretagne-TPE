@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoShop - Paiement Sécurisé</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css">
+</head>
+<body class="bg-light p-4">
+<div class="container" style="max-width: 600px;">
+  <div class="card p-4 shadow-sm">
+    <h2 class="mb-4">Tunnel de Validation</h2>
+    <div id="step-container"></div>
+    <button id="next-btn" class="btn btn-success mt-4">Passer à l'étape suivante</button>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+  // PIÈGE A : Ce tableau conserve des références à des éléments du DOM supprimés (Detached DOM Nodes)
+  const globalHistoryCache = [];
+
+  function renderStep(step) {
+    const container = document.getElementById('step-container');
+    container.innerHTML = '';
+
+    const stepDiv = document.createElement('div');
+    stepDiv.className = "step-content";
+
+    if (step === 1) {
+      stepDiv.innerHTML = `<h5>Étape 1 : Informations de Livraison</h5><input type="text" class="form-control mb-2" placeholder="Adresse email">`;
+    } else if (step === 2) {
+      stepDiv.innerHTML = `<h5>Étape 2 : Mode de Transport</h5><select class="form-select"><option>Livraison Vélo Cargo (Éco)</option><option>Point Relais</option></select>`;
+    } else {
+      stepDiv.innerHTML = `<h5>Étape 3 : Paiement</h5><p>Zone de saisie CB fictive...</p>`;
+      document.getElementById('next-btn').innerText = "Confirmer la commande";
+    }
+
+    container.appendChild(stepDiv);
+    globalHistoryCache.push(stepDiv);
+
+    // PIÈGE B : Accumulation d'écouteurs d'événements anonymes redondants sur la fenêtre globale
+    window.addEventListener('resize', () => {
+      console.log(`[Step ${step}] Recalcul d'adaptation d'écran...`);
+    });
+  }
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    currentStep++;
+    renderStep(currentStep);
+  });
+
+  renderStep(currentStep);
+</script>
+</body>
+</html>

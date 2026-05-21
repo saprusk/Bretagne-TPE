@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Bonjour deux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop - Accueil</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css">
+
+    <style>
+        @font-face {
+            font-family: 'EcoFont';
+            src: url('https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk.woff2') format('woff2');
+        }
+        body { font-family: 'EcoFont', sans-serif; }
+        .hero-banner { background: #e8f5e9; padding: 60px 20px; text-align: center; background: #e8f5e9; }
+    </style>
 </head>
 <body>
-    <h1>kjhgjdhhlghdfjhikgh</h1>
+
+<nav class="navbar navbar-dark bg-success fixed-top" style="padding: 20px;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">🌿 EcoShop</a>
+        <div>
+            <a href="catalog.html" style="color:white; margin-right:15px;">Catalogue</a>
+            <a href="dashboard.html" style="color:white;">Mon Compte</a>
+        </div>
+    </div>
+</nav>
+
+<main style="padding-top: 120px;">
+    <div class="container">
+        <script>
+            const delay = Date.now();
+            while (Date.now() - delay < 3000) {}
+        </script>
+
+        <section class="hero-banner mb-5">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=4000" class="img-fluid" alt="Bannière Planète">
+            <h1 class="display-4 mt-3">Demain s'écrit aujourd'hui</h1>
+        </section>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
