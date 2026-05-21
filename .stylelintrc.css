@@ -1,0 +1,9 @@
+{
+    "extends": "stylelint-config-standard",
+        "rules": {
+        "color-named": "never",
+            "declaration-block-no-duplicate-properties": true,
+            "block-no-empty": true,
+            "selector-max-id": 1
+    }
+}
